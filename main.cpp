@@ -35,6 +35,10 @@ int main() {
 
 		switch (choice) {
 			case 1:
+				printf("Enter the value to add: ");
+				scanf("%d", &value);
+				insertAtHead(&head, value);
+				break;
 			case 2:
 			case 3: // Insert at position
 			case 4: // Add after a specific element
