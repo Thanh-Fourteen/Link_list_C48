@@ -35,17 +35,44 @@ int main() {
 
 		switch (choice) {
 			case 1:
+				printf ("Enter value: ");
+				scanf ("%d", &value);
+				insertAtHead(&head, value);
+				break;
 			case 2:
 			case 3: // Insert at position
 			case 4: // Add after a specific element
 			case 5: // Add before a specific element
 			case 6: // Delete the first element
+		    	deleteAtHead(&head);
+		    	break;
 			case 7: // Delete the last element
+				deleteAtTail(&head);
+				break;
 			case 8: // Delete at position
+				printf ("Enter position: ");
+				scanf ("%d", &position);
+				deleteAtPosition(&head, position);
+				break;
 			case 9: // Delete all occurrences of a value
+				printf ("Enter value: ");
+				scanf ("%d", &value);
+				deleteAllKeys(&head, value);
+				break;
 			case 10: // Delete after a specific element
+	            printf("Enter element: ");
+	            scanf("%d", &key);
+	            deleteAfterKeys(&head, key);
+	            break;
 			case 11: // Delete before a specific element
+	            printf("Enter element: ");
+	            scanf("%d", &key);
+	            deleteBeforeKeys(&head, key);
+	            break;
 			case 12:
+				printList(head);
+				system("pause");
+				break;
 			case 13: // Load test cases from file
 			default:
 				break;
