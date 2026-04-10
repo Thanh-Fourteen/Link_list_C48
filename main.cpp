@@ -1,5 +1,6 @@
 #include "insert.cpp"
 #include "delete.cpp"
+#include "loadTestCase.cpp"
 #include "color.h"
 
 void menu() {
@@ -23,6 +24,7 @@ void menu() {
 
 
 int main() {
+	menu();
 	int choice;
 	Node *head = NULL;
 	do {
@@ -35,77 +37,113 @@ int main() {
 
 		switch (choice) {
 			case 1:
-				printf ("Enter value: ");
-				scanf ("%d", &value);
+				printf("Enter the value to add: ");
+				scanf("%d", &value);
 				insertAtHead(&head, value);
 				break;
+
 			case 2:
-				printf("Enter the value to add: ");
-				scanf ("%d", &value);
+				printf("Enter the value to add:");
+				scanf("%d", &value);
 				insertAtTail(&head, value);
 				break;
+
 			case 3: // Insert at position
-		        printf("Enter value: ");
-                scanf("%d", &value);
+				printf("Enter the position: ");
+				scanf("%d", &position);
+				printf("Enter the value to add: ");
+				scanf("%d", &value);
+				insertAtPosition(&head, value, position);
+				break;
 
-                printf("Enter position: ");
-                scanf("%d", &position);
-                insertAtPosition(&head, value, position);
-                break;
 			case 4: // Add after a specific element
-                printf("Enter value: ");
-                scanf("%d", &value);
-
-                printf("Enter element: ");
-                scanf("%d", &key);
-                insertAfterKeys(&head, value, key);
-                break;
+				printf("Enter the value of the element to add after: ");
+				scanf("%d", &key);
+				printf("Enter the value to add: ");
+				scanf("%d", &key_value);
+				insertAfterKeys(&head, key_value, key);
+				break;
 			case 5: // Add before a specific element
-                printf("Enter value: ");
-                scanf("%d", &value);
+				printf("Enter the value of the element to add before: ");
+				scanf("%d", &key);
+				printf("Enter the value to add: ");
+				scanf("%d", &key_value);
+				insertBeforeKeys(&head, key_value, key);
+				break;
 
-                printf("Enter elements: ");
-                scanf("%d", &key);
-                insertBeforeKeys(&head, value, key);
-                break;
 			case 6: // Delete the first element
-		    	deleteAtHead(&head);
-		    	break;
-			case 7: // Delete the last element
-				deleteAtTail(&head);
-				break;
-			case 8: // Delete at position
-				printf ("Enter position: ");
-				scanf ("%d", &position);
-				deleteAtPosition(&head, position);
-				break;
-			case 9: // Delete all occurrences of a value
-				printf ("Enter value: ");
-				scanf ("%d", &value);
-				deleteAllKeys(&head, value);
-				break;
-			case 10: // Delete after a specific element
-	            printf("Enter element: ");
-	            scanf("%d", &key);
-	            deleteAfterKeys(&head, key);
-	            break;
-			case 11: // Delete before a specific element
-	            printf("Enter element: ");
-	            scanf("%d", &key);
-	            deleteBeforeKeys(&head, key);
-	            break;
-			case 12:
+				deleteAtHead(&head);
+				printf("List after deleting the first element:\n");
 				printList(head);
 				system("pause");
 				break;
+
+			case 7: // Delete the last element
+				deleteAtTail(&head);
+				printf("List after deleting the last element:\n");
+				printList(head);
+				system("pause");
+				break;
+
+			case 8: // Delete at position
+				printf("Enter the position to delete: ");
+				scanf("%d", &position);
+				deleteAtPosition(&head, position);
+				break;
+
+			case 9: // Delete all occurrences of a value
+				printf("Enter the value to delete: ");
+				scanf("%d", &value);
+				deleteAllKeys(&head, value);
+				break;
+
+			case 10: // Delete after a specific element
+				printf("Enter the value of the element to delete after: ");
+				scanf("%d", &key);
+				deleteAfterKeys(&head, key);
+				break;
+			case 11: // Delete before a specific element
+				printf("Enter the value of the element to delete before: ");
+				scanf("%d", &key);
+				deleteBeforeKeys(&head, key);
+				break;
+
+			case 12:
+				printf("Current linked list: ");
+				printList(head);
+				system("pause");
+				break;
+
 			case 13: // Load test cases from file
+	            printf("Enter the test case filename: ");
+	            scanf("%s", filename);
+	            loadTestCases(&head, filename);
+	            printf("Test cases loaded successfully.\n");
+	            system("pause");
+				break;
+
 			default:
 				break;
 		}
+
 	} while (choice != 0);
 
 	freeList(&head);
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
