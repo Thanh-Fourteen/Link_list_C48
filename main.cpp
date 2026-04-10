@@ -40,9 +40,34 @@ int main() {
 				insertAtHead(&head, value);
 				break;
 			case 2:
+				printf("Enter the value to add: ");
+				scanf ("%d", &value);
+				insertAtTail(&head, value);
+				break;
 			case 3: // Insert at position
+		        printf("Enter value: ");
+                scanf("%d", &value);
+
+                printf("Enter position: ");
+                scanf("%d", &position);
+                insertAtPosition(&head, value, position);
+                break;
 			case 4: // Add after a specific element
+                printf("Enter value: ");
+                scanf("%d", &value);
+
+                printf("Enter element: ");
+                scanf("%d", &key);
+                insertAfterKeys(&head, value, key);
+                break;
 			case 5: // Add before a specific element
+                printf("Enter value: ");
+                scanf("%d", &value);
+
+                printf("Enter elements: ");
+                scanf("%d", &key);
+                insertBeforeKeys(&head, value, key);
+                break;
 			case 6: // Delete the first element
 			case 7: // Delete the last element
 			case 8: // Delete at position
@@ -50,6 +75,9 @@ int main() {
 			case 10: // Delete after a specific element
 			case 11: // Delete before a specific element
 			case 12:
+				 printList(head);
+				 system("pause");
+                 break;
 			case 13: // Load test cases from file
 			default:
 				break;
