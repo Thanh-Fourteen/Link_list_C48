@@ -84,9 +84,9 @@ void deleteBeforeKeys(Node **head, int key){
 	if (*head == NULL || (*head)->next == NULL)
 		return;
 	
-	while((*head)->next->data == key)
+	while((*head)->next != NULL && (*head)->next->data == key)
 		deleteAtHead(&(*head));
-	
+
 	Node *temp = *head;
 	while(temp->next != NULL && temp->next->next != NULL){
 		if (temp->next->next->data == key){
